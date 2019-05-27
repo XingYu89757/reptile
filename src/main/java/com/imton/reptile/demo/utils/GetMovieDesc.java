@@ -48,8 +48,7 @@ public class GetMovieDesc {
               //  getListDesc(attr);
             }
 
-           // System.out.println(text);
-           // System.out.println(attr);
+
 
         }
         System.out.println(i);
