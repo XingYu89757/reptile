@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.imton.reptile.demo.dao.MovieUrlDao">
+
+	<select id="queryObject" resultType="com.imton.reptile.demo.entity.MovieUrlEntity">
+		select * from movie_url where id = #{id}
+	</select>
+
+	<select id="queryList" resultType="com.imton.reptile.demo.entity.MovieUrlEntity">
+		select * from movie_url
+	</select>
+	 
+	<insert id="save" parameterType="com.imton.reptile.demo.entity.MovieUrlEntity">
+		insert into movie_url
+		(
+			`id`, 
+			`des_id`, 
+			`des_url`
+		)
+		values
+		(
+			#{id}, 
+			#{desId}, 
+			#{desUrl}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="java.util.HashMap">
+		update movie_url 
+		<set>
+			<if test="desId != null">`des_id` = #{desId}, </if>
+			<if test="desUrl != null">`des_url` = #{desUrl}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from movie_url where id = #{id}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from movie_url where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.imton.reptile.demo.dao.MovieDescDao">
+
+	<select id="queryObject" resultType="com.imton.reptile.demo.entity.MovieDescEntity">
+		select * from movie_desc where id = #{id}
+	</select>
+
+	<select id="queryList" resultType="com.imton.reptile.demo.entity.MovieDescEntity">
+		select * from movie_desc
+	</select>
+	 
+	<insert id="save" parameterType="com.imton.reptile.demo.entity.MovieDescEntity">
+		insert into movie_desc
+		(
+			`id`, 
+			`type_name`, 
+			`type_code`, 
+			`move_name`, 
+			`img`, 
+			`move_score`, 
+			`translated_name`, 
+			`old_name`, 
+			`year`, 
+			`place_origin`, 
+			`type`, 
+			`language`, 
+			`subitile`, 
+			`release_time`, 
+			`douban`, 
+			`IMDb`, 
+			`video_size`, 
+			`video_memory`, 
+			`mins`, 
+			`director`, 
+			`superstar`, 
+			`intro`, 
+			`url`, 
+			`create_time`, 
+			`release_date`
+		)
+		values
+		(
+			#{id}, 
+			#{typeName}, 
+			#{typeCode}, 
+			#{moveName}, 
+			#{img}, 
+			#{moveScore}, 
+			#{translatedName}, 
+			#{oldName}, 
+			#{year}, 
+			#{placeOrigin}, 
+			#{type}, 
+			#{language}, 
+			#{subitile}, 
+			#{releaseTime}, 
+			#{douban}, 
+			#{imdb}, 
+			#{videoSize}, 
+			#{videoMemory}, 
+			#{mins}, 
+			#{director}, 
+			#{superstar}, 
+			#{intro}, 
+			#{url}, 
+			#{createTime}, 
+			#{releaseDate}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.imton.reptile.demo.entity.MovieDescEntity">
+		update movie_desc 
+		<set>
+			<if test="typeName != null">`type_name` = #{typeName}, </if>
+			<if test="typeCode != null">`type_code` = #{typeCode}, </if>
+			<if test="moveName != null">`move_name` = #{moveName}, </if>
+			<if test="img != null">`img` = #{img}, </if>
+			<if test="moveScore != null">`move_score` = #{moveScore}, </if>
+			<if test="translatedName != null">`translated_name` = #{translatedName}, </if>
+			<if test="oldName != null">`old_name` = #{oldName}, </if>
+			<if test="year != null">`year` = #{year}, </if>
+			<if test="placeOrigin != null">`place_origin` = #{placeOrigin}, </if>
+			<if test="type != null">`type` = #{type}, </if>
+			<if test="language != null">`language` = #{language}, </if>
+			<if test="subitile != null">`subitile` = #{subitile}, </if>
+			<if test="releaseTime != null">`release_time` = #{releaseTime}, </if>
+			<if test="douban != null">`douban` = #{douban}, </if>
+			<if test="imdb != null">`IMDb` = #{imdb}, </if>
+			<if test="videoSize != null">`video_size` = #{videoSize}, </if>
+			<if test="videoMemory != null">`video_memory` = #{videoMemory}, </if>
+			<if test="mins != null">`mins` = #{mins}, </if>
+			<if test="director != null">`director` = #{director}, </if>
+			<if test="superstar != null">`superstar` = #{superstar}, </if>
+			<if test="intro != null">`intro` = #{intro}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="releaseDate != null">`release_date` = #{releaseDate}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from movie_desc where id = #{id}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from movie_desc where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
