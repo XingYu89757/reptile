@@ -1,0 +1,15 @@
+server:
+  port: 8000   #  配置启动端口号
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml    #  mybatis主配置文件所在路径
+  type-aliases-package: com.imtom.reptile.demo.entity   #  定义所有操作类的别名所在包
+  mapper-locations: classpath*:mapper/*.xml              #  所有的mapper映射文件
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver   #  配置mysql的驱动程序类
+    url: jdbc:mysql://localhost:3306/reptile?useUnicode=true&characterEncoding=UTF-8         #  数据库连接地址
+    username: root                                #  数据库用户名
+    password: 123456                                 #  数据库密码
+

@@ -1,17 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imtom.reptile.demo.mapper.MovieDescDao">
 
-<mapper namespace="com.imton.reptile.demo.dao.MovieDescDao">
+	<resultMap type="com.imtom.reptile.demo.entity.MovieDescEntity" id="MovieDescEntity">
+		<result column="id" property="id"/>
+		<result column="type_name"  property="typeName"/>
+		<result column="type_code"  property="typeCode"/>
+		<result column="move_name" property="moveName"/>
+		<result column="img" property="img"/>
+		<result column="move_score"  property="moveScore"/>
+		<result column="translated_name" property="translatedName"/>
+		<result column="old_name"  property="oldName"/>
+		<result column="year"  property="year"/>
+		<result column="place_origin"  property="placeOrigin"/>
+		<result column="type"  property="type"/>
+		<result column="language"  property="language"/>
+		<result column="subitile"  property="subitile"/>
+		<result column="release_time"  property="releaseTime"/>
+		<result column="douban"  property="douban"/>
+		<result column="IMDb"  property="imDb"/>
+		<result column="video_size"  property="videoSize"/>
+		<result column="video_memory"  property="videoMemory"/>
+		<result column="mins"  property="mins"/>
+		<result column="director"  property="director"/>
+		<result column="superstar"  property="superstar"/>
+		<result column="intro"  property="intro"/>
+		<result column="url"  property="url"/>
+		<result column="create_time"  property="createTime"/>
+		<result column="release_date"  property="releaseDate"/>
 
-	<select id="queryObject" resultType="com.imton.reptile.demo.entity.MovieDescEntity">
+	</resultMap>
+
+
+	<select id="queryObject" resultType="com.imtom.reptile.demo.entity.MovieDescEntity">
 		select * from movie_desc where id = #{id}
 	</select>
 
-	<select id="queryList" resultType="com.imton.reptile.demo.entity.MovieDescEntity">
+	<select id="queryList" resultMap="MovieDescEntity">
 		select * from movie_desc
 	</select>
 	 
-	<insert id="save" parameterType="com.imton.reptile.demo.entity.MovieDescEntity">
+	<insert id="save" parameterType="com.imtom.reptile.demo.entity.MovieDescEntity">
 		insert into movie_desc
 		(
 			`id`, 
@@ -70,7 +99,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.imton.reptile.demo.entity.MovieDescEntity">
+	<update id="update" parameterType="com.imtom.reptile.demo.entity.MovieDescEntity">
 		update movie_desc 
 		<set>
 			<if test="typeName != null">`type_name` = #{typeName}, </if>
@@ -104,12 +133,12 @@
 	<delete id="delete">
 		delete from movie_desc where id = #{id}
 	</delete>
-	
+	<!--
 	<delete id="deleteBatch">
 		delete from movie_desc where id in 
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>
 	</delete>
-
+-->
 </mapper>

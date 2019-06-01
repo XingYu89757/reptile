@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imtom.reptile.demo.mapper.MovieTypeDao">
 
-<mapper namespace="com.imton.reptile.demo.dao.MovieTypeDao">
+	<resultMap type="com.imtom.reptile.demo.entity.MovieTypeEntity" id="MovieTypeEntity">
+		<result column="id" property="id"/>
+		<result column="type_name" property="typeName"/>
+		<result column="type_code" property="typeCode"/>
+		<result column="source" property="source"/>
+		<result column="url" property="url"/>
 
-	<select id="queryObject" resultType="com.imton.reptile.demo.entity.MovieTypeEntity">
+	</resultMap>
+
+
+
+	<select id="queryObject" resultType="com.imtom.reptile.demo.entity.MovieTypeEntity">
 		select * from movie_type where id = #{id}
 	</select>
 
-	<select id="queryList" resultType="com.imton.reptile.demo.entity.MovieTypeEntity">
+	<select id="queryList" resultMap="MovieTypeEntity">
 		select * from movie_type
 	</select>
 	 
-	<insert id="save" parameterType="com.imton.reptile.demo.entity.MovieTypeEntity">
+	<insert id="save" parameterType="com.imtom.reptile.demo.entity.MovieTypeEntity">
 		insert into movie_type
 		(
 			`id`, 
@@ -30,7 +40,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.imton.reptile.demo.entity.MovieTypeEntity">
+	<update id="update" parameterType="com.imtom.reptile.demo.entity.MovieTypeEntity">
 		update movie_type 
 		<set>
 			<if test="typeName != null">`type_name` = #{typeName}, </if>
@@ -45,11 +55,6 @@
 		delete from movie_type where id = #{value}
 	</delete>
 	
-	<delete id="deleteBatch">
-		delete from movie_type where id in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+
 
 </mapper>
