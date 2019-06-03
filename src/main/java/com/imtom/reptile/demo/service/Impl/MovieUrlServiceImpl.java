@@ -16,7 +16,7 @@ import java.util.List;
  * @Date 2019/5/28 20:36
  * @Version 1.0
  **/
-@Service(value = "MovieUrlService")
+@Service
 public class MovieUrlServiceImpl implements MovieUrlService {
 
     //@Resource(name = "movieUrlDao")
