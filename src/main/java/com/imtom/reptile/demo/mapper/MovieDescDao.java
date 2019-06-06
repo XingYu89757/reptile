@@ -18,5 +18,4 @@ public interface MovieDescDao {
 
     int delete(int id);
 
-
 }

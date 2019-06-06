@@ -356,4 +356,35 @@ public class MovieDescEntity {
         result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "MovieDescEntity{" +
+                "id='" + id + '\'' +
+                ", typeName='" + typeName + '\'' +
+                ", typeCode='" + typeCode + '\'' +
+                ", moveName='" + moveName + '\'' +
+                ", img='" + img + '\'' +
+                ", moveScore='" + moveScore + '\'' +
+                ", translatedName='" + translatedName + '\'' +
+                ", oldName='" + oldName + '\'' +
+                ", year='" + year + '\'' +
+                ", placeOrigin='" + placeOrigin + '\'' +
+                ", type='" + type + '\'' +
+                ", language='" + language + '\'' +
+                ", subitile='" + subitile + '\'' +
+                ", releaseTime='" + releaseTime + '\'' +
+                ", douban='" + douban + '\'' +
+                ", imDb='" + imDb + '\'' +
+                ", videoSize='" + videoSize + '\'' +
+                ", videoMemory='" + videoMemory + '\'' +
+                ", mins='" + mins + '\'' +
+                ", director='" + director + '\'' +
+                ", superstar='" + superstar + '\'' +
+                ", intro='" + intro + '\'' +
+                ", url='" + url + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", releaseDate=" + releaseDate +
+                '}';
+    }
 }

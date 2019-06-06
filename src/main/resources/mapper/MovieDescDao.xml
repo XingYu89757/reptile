@@ -86,7 +86,7 @@
 			#{subitile}, 
 			#{releaseTime}, 
 			#{douban}, 
-			#{imdb}, 
+			#{imDb},
 			#{videoSize}, 
 			#{videoMemory}, 
 			#{mins}, 
@@ -116,7 +116,7 @@
 			<if test="subitile != null">`subitile` = #{subitile}, </if>
 			<if test="releaseTime != null">`release_time` = #{releaseTime}, </if>
 			<if test="douban != null">`douban` = #{douban}, </if>
-			<if test="imdb != null">`IMDb` = #{imdb}, </if>
+			<if test="imDb != null">`IMDb` = #{imDb}, </if>
 			<if test="videoSize != null">`video_size` = #{videoSize}, </if>
 			<if test="videoMemory != null">`video_memory` = #{videoMemory}, </if>
 			<if test="mins != null">`mins` = #{mins}, </if>

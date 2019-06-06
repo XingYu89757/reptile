@@ -5,6 +5,9 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @ClassName InfoUtils
  * @Description TODO
@@ -28,45 +31,46 @@ public class InfoUtils {
 
             String infos = info.replaceAll("　", "");//截取第一个符号，取出空格
             if (infos.length() != 0 && infos != "") {
-                if (infos.contains("译名")) {
+                if (infos.contains("◎译名")) {
                     movieDescEntity.setTranslatedName(infos.substring(3));
-                } else if (infos.contains("片名")) {
+                } else if (infos.contains("◎片名")) {
                     movieDescEntity.setOldName(infos.substring(3));
-                } else if (infos.contains("年代")) {
+                } else if (infos.contains("◎年代")) {
                     movieDescEntity.setYear(infos.substring(3));
-                } else if (infos.contains("产地")) {
+                } else if (infos.contains("◎产地")) {
                     movieDescEntity.setPlaceOrigin(infos.substring(3));
-                } else if (infos.contains("类别")) {
+                } else if (infos.contains("◎类别")) {
                     movieDescEntity.setType(infos.substring(3));
-                } else if (infos.contains("语言")) {
+                } else if (infos.contains("◎语言")) {
                     movieDescEntity.setLanguage(infos.substring(3));
-                } else if (infos.contains("字幕")) {
+                } else if (infos.contains("◎字幕")) {
                     movieDescEntity.setSubitile(infos.substring(3));
-                } else if (infos.contains("上映日期")) {
+                } else if (infos.contains("◎上映日期")) {
                     movieDescEntity.setReleaseTime(infos.substring(5));
-                } else if (infos.contains("豆瓣评分")) {
+                } else if (infos.contains("◎豆瓣评分")) {
                     movieDescEntity.setDouban(infos.substring(5));
-                } else if (infos.contains("IMDb评分")) {
+                } else if (infos.contains("◎IMDb评分")) {
                     movieDescEntity.setImDb(infos.substring(7));
-                } else if (infos.contains(("视频尺寸"))) {
+                } else if (infos.contains(("◎视频尺寸"))) {
                     movieDescEntity.setVideoSize(infos.substring(5));
-                } else if (infos.contains("文件大小")) {
+                } else if (infos.contains("◎文件大小")) {
                     movieDescEntity.setVideoMemory(infos.substring(5));
-                } else if (infos.contains("片长")) {
+                } else if (infos.contains("◎片长")) {
                     movieDescEntity.setMins(infos.substring(3));
-                } else if (infos.contains("导演")) {
+                } else if (infos.contains("◎导演")) {
                     movieDescEntity.setDirector(infos.substring(3));
-                } else if (infos.contains("主演")) {
+                } else if (infos.contains("◎主演")) {
                     movieDescEntity.setSuperstar(infos.substring(3));
-                } else if (infos.contains("简介")) {
+                } else if (infos.contains("◎简介")) {
                     String intro = elements.get(i + 1).text().trim();//简介信息获取下一个p标签中的内容
                     movieDescEntity.setIntro(intro);
                 }
             }
+            movieDescEntity.setMoveScore(movieDescEntity.getDouban());//电影评分默认显示豆瓣评分
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+            movieDescEntity.setCreateTime(df.format(new Date()));
         }
         LOG.info("通过遍历获取到的电影详情的信息"+movieDescEntity.toString());
         return movieDescEntity;
     }
-
-
 }

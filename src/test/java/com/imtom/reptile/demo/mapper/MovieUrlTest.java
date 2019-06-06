@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.io.IOException;
+
+import static com.imtom.reptile.demo.utils.GetMovieDesc.getListDesc;
 
 /**
  * @ClassName MovieUrlTest
@@ -20,8 +24,10 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MovieUrlTest {
+
     @Autowired
-    private MovieUrlDao movieUrlDao;
+    private  MovieUrlDao movieUrlDao;
+
 
     @Test
     public void contextLoads() {
@@ -35,5 +41,11 @@ public class MovieUrlTest {
         System.out.println("fanhui"+movieUrlEntity1.toString());
         //  movieUrlDao.save(movieUrlEntity);
         System.out.println("hello world2");
+    }
+
+    @Test
+    public  void insertdb() throws IOException {
+        String url="https://www.dy2018.com/html/gndy/dyzz/";
+         getListDesc(url);
     }
 }
